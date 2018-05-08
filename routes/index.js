@@ -63,6 +63,7 @@ const retrieveToken = () => {
     console.log('----> Obtaining OAuth Token...');
     request.post(options, (err, resp, body) => {
       const resultJson = JSON.parse(body);
+      reject(message:resultJson);
       if (!err) {
         console.log('----> Token Obtained. Verifying that API Key present and valid with server...');
         resolve(resultJson);
@@ -95,8 +96,8 @@ const verifyAPIToken = (req, resultJson) => {
         resolve(resultJson);
       } else {
         console.log('----> Error: ' + err);
-        //reject({ code: 400, message: 'API Key provided is not valid.' });
-        resolve(resultJson);
+        reject({ code: 400, message: 'API Key provided is not valid.' });
+        //resolve(resultJson);
       } 
     });
   });
@@ -124,8 +125,8 @@ const retrieveServiceRequestId = (req, resultJson) => {
         resolve(combinedResults);
       } else {
         console.log('----> Error: ' + err);
-        //reject({ code: 400, message: 'Service Request Id was not provided or is not valid.' });
-        reject({ code: 400, message:body });
+        reject({ code: 400, message: 'Service Request Id was not provided or is not valid.' });
+        //reject({ code: 400, message:body });
       } 
     });
   });
