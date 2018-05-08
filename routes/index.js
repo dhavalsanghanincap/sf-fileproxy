@@ -95,7 +95,8 @@ const verifyAPIToken = (req, resultJson) => {
         resolve(resultJson);
       } else {
         console.log('----> Error: ' + err);
-        reject({ code: 400, message: 'API Key provided is not valid.' });
+        //reject({ code: 400, message: 'API Key provided is not valid.' });
+        resolve(resultJson);
       } 
     });
   });
