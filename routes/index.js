@@ -124,7 +124,8 @@ const retrieveServiceRequestId = (req, resultJson) => {
         resolve(combinedResults);
       } else {
         console.log('----> Error: ' + err);
-        reject({ code: 400, message: 'Service Request Id was not provided or is not valid.' });
+        //reject({ code: 400, message: 'Service Request Id was not provided or is not valid.' });
+        reject({ code: 400, message:resultJson.access_token });
       } 
     });
   });
