@@ -63,7 +63,7 @@ const retrieveToken = () => {
     console.log('----> Obtaining OAuth Token...');
     request.post(options, (err, resp, body) => {
       const resultJson = JSON.parse(body);
-      reject(message:resultJson);
+      reject(message:body);
       if (!err) {
         console.log('----> Token Obtained. Verifying that API Key present and valid with server...');
         resolve(resultJson);
